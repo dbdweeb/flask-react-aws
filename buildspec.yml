@@ -52,7 +52,9 @@ phases:
   post_build:
     commands:
     - echo pushing prod images to Elastic Cloud Registry...
-    - $(aws ecr get-login --no-include-email --region $AWS_REGION)
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-users:prod
+    - echo pushed test-driven-users:prod
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:builder
+    - echo pushed test-driven-client:builder
     - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/test-driven-client:prod
+    - echo pushed test-driven-client:prod
